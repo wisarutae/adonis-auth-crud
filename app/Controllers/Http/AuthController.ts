@@ -24,4 +24,9 @@ export default class AuthController {
     })
     return { username: email, token: token.toJSON() }
   }
+
+  public async logout({ request, auth }: HttpContextContract) {
+    await auth.use('api').logout()
+    return 'Logout successfully'
+  }
 }
